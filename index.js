@@ -59,6 +59,10 @@ function setCurrentLocation(position) {
     marker.setMap(map);
 }
 
-$("button").click(function(){
-    navigator.geolocation.getCurrentPosition(setCurrentLocation)
+$("#mylocation").click(function(){
+    let ams = { "lat": 52.3646, "lng": 4.8505 };
+    var marker = new google.maps.Marker({position: ams});
+    //var marker = new google.maps.Marker({position: { "lat": position.coords.latitude, "lng": position.coords.longitude }});
+    marker.setMap(map);
+    //navigator.geolocation.getCurrentPosition(setCurrentLocation)
 });
