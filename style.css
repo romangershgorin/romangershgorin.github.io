@@ -12,9 +12,5 @@ html, body {
 
 .col-sm-8 {
     border: 1px solid black;
-    min-height: 60vh;
-}
-
-.row {
-    height: 100%
+    height: 60vh;
 }
