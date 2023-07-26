@@ -54,17 +54,12 @@ function initMap() {
   
   window.initMap = initMap;
 
-function setCurrentLocation(position) {
-    currentPos = { "lat": position.coords.latitude, "lng": position.coords.longitude };
-    var marker = new google.maps.Marker({position: currentPos});
-    marker.setMap(map);
-    map.setCenter(currentPos)
-}
-
 $("#mylocation").click(function(){
-    //let ams = { "lat": 52.3646, "lng": 4.8505 };
-    //var marker = new google.maps.Marker({position: ams});
-    //var marker = new google.maps.Marker({position: { "lat": position.coords.latitude, "lng": position.coords.longitude }});
-    //marker.setMap(map);
-    navigator.geolocation.getCurrentPosition(setCurrentLocation)
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+        initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        var marker = new google.maps.Marker({position: initialLocation});
+        marker.setMap(map);    
+        map.setCenter(initialLocation);
+    });
 });
