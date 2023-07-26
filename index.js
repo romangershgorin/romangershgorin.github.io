@@ -62,4 +62,5 @@ $("#mylocation").click(function(){
         marker.setMap(map);    
         map.setCenter(initialLocation);
     });
+  }
 });
