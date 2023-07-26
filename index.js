@@ -55,8 +55,10 @@ function initMap() {
   window.initMap = initMap;
 
 function setCurrentLocation(position) {
-    var marker = new google.maps.Marker({position: { "lat": position.coords.latitude, "lng": position.coords.longitude }});
+    currentPos = { "lat": position.coords.latitude, "lng": position.coords.longitude };
+    var marker = new google.maps.Marker({position: currentPos});
     marker.setMap(map);
+    map.setCenter(currentPos)
 }
 
 $("#mylocation").click(function(){
