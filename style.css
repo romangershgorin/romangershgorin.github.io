@@ -14,3 +14,7 @@ html, body {
     border: 1px solid black;
     height: 60vh;
 }
+
+.row {
+    height: 60vh;
+}
