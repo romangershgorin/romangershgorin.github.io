@@ -56,11 +56,35 @@ function initMap() {
 
 $("#mylocation").click(function(){
   if (navigator.geolocation) {
+    const contentString =
+      '<div id="content">' +
+      '<div id="siteNotice">' +
+      "</div>" +
+      '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
+      '<div id="bodyContent">' +
+      "<p>Hello from Zozman</p>" +
+      '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
+      "https://en.wikipedia.org/w/index.php?title=Uluru</a> " +
+      "(last visited June 22, 2009).</p>" +
+      "</div>" +
+      "</div>";
+    const infowindow = new google.maps.InfoWindow({
+      content: contentString,
+      ariaLabel: "Uluru",
+    });
+      
     navigator.geolocation.getCurrentPosition(function (position) {
-        initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        var marker = new google.maps.Marker({position: initialLocation});
-        marker.setMap(map);    
-        map.setCenter(initialLocation);
+      initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      var marker = new google.maps.Marker({position: initialLocation});
+      marker.addListener("click", () => {
+        infowindow.open({
+          anchor: marker,
+          map,
+          });
+        });
+
+      marker.setMap(map);    
+      map.setCenter(initialLocation);
     });
   }
 });
